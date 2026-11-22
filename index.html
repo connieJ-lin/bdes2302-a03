@@ -2,13 +2,32 @@
 
 <head>
     <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
-    <script
-        src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+    <script src="https://aframe.io"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.7.0/dist/aframe-extras.min.js"></script>
+    
 </head>
 
 <body>
     <a-scene>
+      <a-assets>
+        <img id="sky-360" src="background.jpg" crossorigin="anonymous">
+        <a-asset-item id="center-model" src="assets/model.glb"></a-asset-item>
+      </a-assets>
+
+      <a-sky src="#sky-360" rotation="0 -90 0"></a-sky>
+
+      <a-gltf-model 
+        src="Tree_Scene.glb" 
+        position="0 0 -5" 
+        scale="1 1 1" 
+        rotation="0 0 0">
+      </a-gltf-model>
+
+      <!-- 4. Lighting so your 3D model is clearly visible -->
+      <a-light type="ambient" intensity="0.8"></a-light>
+      <a-light type="directional" position="2 4 3" intensity="1.2"></a-light>
+    </a-scene>
+<!-- <a-scene>
         <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
         <a-entity gltf-model="url(Tree_Scene.glb)"></a-entity>
         <a-entity id="cameraRig" position="0 1.6 0" movement-controls>
@@ -17,7 +36,7 @@
             </a-camera>
              <a-box color="yellow" position="0 0 -2" rotation="0 0 0" scale="0.5 0.5 0.5"></a-box>
         </a-entity>
-    </a-scene>
+    </a-scene> -->
 </body>
 
 </html>
