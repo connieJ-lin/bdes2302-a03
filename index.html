@@ -1,6 +1,15 @@
 <html>
 
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Agrave+Pro:wght@100..700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
   <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
   <script>
     AFRAME.registerComponent('frog', {
@@ -16,10 +25,25 @@
 </head>
 
 <body>
-  <div style ="position: fixed; top: 10px; left: 10px; z-index: 10; color: rgb(151, 128, 255); font-size: 20px;">
-  <p id="count">Jumps: 0</p>
-  <p id="timer">Time: 10</p>
-  <button id="startBtn">Start</button>
+  <div id="modal" class="modal-overlay show">
+    <div class="modal-content">
+      <h2>Design Rationale</h2>
+      <p>
+        For this assignment, we used A-Frame and JavaScript libraries and tutorials (W3Schools), to build a small 3D forest scene. The 3D scene was built with Blender, the other assets were taken from Pexels and SketchFab. 
+      
+      </p>
+      <br><h3><b>How to play</b></h3>
+      <p>Press <b><span style="color: rgb(241, 233, 84);">Start</span></b> to begin the game. Then click on the frog as many times as you can in 10 seconds! Your score will be displayed at the end of the game.
+      </p>
+      <button id="playBtn" class="btn">Play Now</button>
+
+    </div>
+
+  </div>
+  <div style ="position: fixed; top: 50px; left: 50px; z-index: 50; color: rgb(151, 128, 255); font-size: 20px; font-family: 'Lato', sans-serif;">
+   <p id="count">Jumps: 0</p>
+   <p id="timer">Time: 10</p>
+   <button id="startBtn" class="btn">Start</button>
   </div>
   
   <a-scene cursor="rayOrigin: mouse" raycaster="objects: .clickable">
@@ -52,6 +76,11 @@
     <a-light type="directional" position="2 4 3" intensity="1.2"></a-light>
 
   </a-scene>
+  <script>
+  document.getElementById("playBtn").addEventListener("click", function () {
+    document.getElementById("modal").classList.remove("show");
+  });
+</script>
   <script>
     let jumps = 0;
     let time = 10;
