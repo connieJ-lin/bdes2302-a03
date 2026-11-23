@@ -29,9 +29,22 @@
     <div class="modal-content">
       <h2>Design Rationale</h2>
       <p>
-        For this assignment, we used A-Frame and JavaScript libraries and tutorials (W3Schools), to build a small 3D forest scene. The 3D scene was built with Blender, the other assets were taken from Pexels and SketchFab. 
-      
+        For this assignment, we used A-Frame and JavaScript libraries and W3Schools tutorials, to build a small 3D forest scene. The 3D scene was built with Blender, the other assets come from Pexels and SketchFab. 
       </p>
+      <h3>How we built it</h3>
+<p>
+  The forest and the frog are 3D models (.glb files) loaded into an A-Frame scene, with a 360° image as the sky.
+  The mouse acts as a pointer in the 3D world, so the frog can be clicked like a button.
+  When you hover over the frog it grows slightly to show it can be clicked, and when you click it,
+  an A-Frame animation makes it hop.
+</p>
+<p>
+  The game uses simple JavaScript. Pressing <b>Start</b> resets the score and starts a 10-second countdown
+  with <code>setInterval()</code>. Each click on the frog is detected with <code>addEventListener("click")</code>
+  and adds 1 to the jump counter. When the timer reaches 0, <code>clearInterval()</code> stops the countdown
+  and your final score is shown. This popup is a modal, based on the W3Schools Modal Popup project.
+</p>
+
       <br><h3><b>How to play</b></h3>
       <p>Press <b><span style="color: rgb(241, 233, 84);">Start</span></b> to begin the game. Then click on the frog as many times as you can in 10 seconds! Your score will be displayed at the end of the game.
       </p>
