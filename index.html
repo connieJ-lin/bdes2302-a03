@@ -16,6 +16,12 @@
 </head>
 
 <body>
+  <div style ="position: fixed; top: 10px; left: 10px; z-index: 10; color: rgb(151, 128, 255); font-size: 20px;">
+  <p id="count">Jumps: 0</p>
+  <p id="timer">Time: 10</p>
+  <button id="startBtn">Start</button>
+  </div>
+  
   <a-scene cursor="rayOrigin: mouse" raycaster="objects: .clickable">
     <a-assets>
       <img id="sky-360" src="background.jpg" crossorigin="anonymous">
@@ -27,7 +33,7 @@
 
     <a-entity id="cameraRig" position="0 0.8 3" movement-controls>
       <a-camera wasd-controls-enabled="false" look-controls-enabled="true">
-        <a-cursor></a-cursor>
+        
       </a-camera>
 
       <a-entity id="frog" class="clickable" frog gltf-model="#frog-model" position="0 1 -2" rotation="0 0 0"
@@ -46,6 +52,37 @@
     <a-light type="directional" position="2 4 3" intensity="1.2"></a-light>
 
   </a-scene>
+  <script>
+    let jumps = 0;
+    let time = 10;
+    let playing = false;
+
+    document.getElementById("startBtn").addEventListener("click", function () {
+    jumps = 0;
+    time = 10;
+    playing = true;
+    document.getElementById("count").innerHTML = "Jumps: 0";
+    document.getElementById("timer").innerHTML = "Time: 10";
+
+    let countdown = setInterval(function () {
+      time--;
+      document.getElementById("timer").innerHTML = "Time: " + time;
+
+      if (time == 0) {
+        clearInterval(countdown);
+        playing = false;
+        document.getElementById("timer").innerHTML = "Game over! You got " + jumps + " jumps!";
+      }
+    }, 1000);
+  });
+
+  document.getElementById("frog").addEventListener("click", function () {
+    if (playing) {
+      jumps++;
+      document.getElementById("count").innerHTML = "Jumps: " + jumps;
+    }
+  });
+</script>
 </body>
 
 </html>
